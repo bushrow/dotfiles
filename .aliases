@@ -1,0 +1,56 @@
+alias ls="ls -FG"
+alias la="ls -FGa"
+alias ll="ls -FGlh"
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+alias erc="subl ~/dotfiles/.bashrc"
+alias eprof="subl ~/dotfiles/.bash_profile"
+alias eal="subl ~/dotfiles/.aliases"
+
+alias ca="conda activate"
+alias jn="jupyter notebook"
+
+
+alias gs="git status"
+alias ga="git add ."
+alias gcm="git commit -m"
+alias gac="ga && gcm"
+alias pull="git pull"
+alias gf="git fetch"
+alias push="git push"
+alias co="git checkout"
+alias grs="git restore --staged"
+alias gr="git restore"
+alias gb="git branch"
+alias gm="git merge"
+
+gsa () {
+    base_dir=$(pwd)
+    updates=0
+    for f in $(find . -name '.git')
+    do
+        repo_folder="$(dirname "$f")"
+        full_repo_folder="${base_dir}/${repo_folder:2}/"
+        repo_name="$(basename "$repo_folder")"
+        cd $full_repo_folder
+        status=$(git status)
+        if [[ "$status" == *"nothing to commit"* ]]; then
+            continue
+        fi
+        ((updates+=1))
+        echo $'\n'
+        echo "==================="
+        echo $repo_name | tr "a-z" "A-Z"
+        echo "==================="
+        echo $'\n'
+        git status
+    done
+    if [[ $updates == 0 ]]; then
+        echo "All repositories are up to date. Nothing to commit."
+    fi
+    cd $base_dir
+}
