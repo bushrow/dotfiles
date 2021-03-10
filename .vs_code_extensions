@@ -1,0 +1,6 @@
+code --install-extension GrapeCity.gc-excelviewer
+code --install-extension ms-python.python
+code --install-extension ms-toolsai.jupyter
+code --install-extension ritwickdey.LiveServer
+code --install-extension tomoki1207.pdf
+code --install-extension VisualStudioExptTeam.vscodeintellicode
