@@ -29,7 +29,3 @@ modified = "📝"
 staged = '[++\($count\)](green)'
 renamed = "👅"
 deleted = "🗑 "
-
-[python]
-symbol = "👾 "
-pyenv_version_name = true
