@@ -33,5 +33,3 @@ unset __conda_path
 if [ -f ~/.bashrc ]; then
    source ~/.bashrc
 fi
-
-eval "$(starship init bash)"
