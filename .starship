@@ -15,7 +15,8 @@ format = "user: [$user]($style) "
 disabled = false
 
 [conda]
-format = "[$symbol$environment](dimmed green) "
+format = "[(\\($environment\\))](dimmed green) "
+ignore_base = true
 
 [git_status]
 conflicted = "🏳"
@@ -27,7 +28,7 @@ stashed = "📦"
 modified = "📝"
 staged = '[++\($count\)](green)'
 renamed = "👅"
-deleted = "🗑"
+deleted = "🗑 "
 
 [python]
 symbol = "👾 "
