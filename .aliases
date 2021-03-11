@@ -11,6 +11,7 @@ alias erc="subl ~/dotfiles/.bashrc"
 alias eprof="subl ~/dotfiles/.bash_profile"
 alias eal="subl ~/dotfiles/.aliases"
 alias egi="subl ~/dotfiles/.gitignore"
+alias eshp="subl ~/dotfiles/.starship"
 
 alias ca="conda activate"
 alias jn="jupyter notebook"
