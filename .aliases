@@ -15,7 +15,8 @@ alias eshp="subl ~/dotfiles/.starship"
 
 alias ca="conda activate"
 alias jn="jupyter notebook"
-
+alias scrap="jn '/Users/bushrow/bin/Scrap Notebook.ipynb'"
+alias rs_nb="cp '/Users/bushrow/bin/Redshift Connection Template.ipynb' $(pwd)/Untitled.ipynb && jn $(pwd)/Untitled.ipynb"
 
 alias gs="git status"
 alias ga="git add ."

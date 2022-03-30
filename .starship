@@ -1,3 +1,6 @@
+[character]
+success_symbol = "[➜](bold green)"
+
 [directory]
 truncation_length = 4
 truncation_symbol = "…/"
@@ -23,7 +26,7 @@ conflicted = "🏳"
 ahead = "⇡${count}"
 diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
-untracked = "🤷‍"
+untracked = "🤷‍♂️"
 stashed = "📦"
 modified = "📝"
 staged = '[++\($count\)](green)'
