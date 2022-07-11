@@ -20,6 +20,7 @@ alias scrap="jn '/Users/bushrow/bin/Scrap Notebook.ipynb'"
 alias km="kinit -f && mwinit"
 alias rs_nb='cp "/Users/bushrow/bin/Redshift Connection Template.ipynb" $(pwd)/Untitled.ipynb && jn $(pwd)/Untitled.ipynb'
 alias lucid="cd /Users/bushrow/Projects/TeamRepos/Lucid-DAaS/"
+alias myvoice="cd /Users/bushrow/Projects/MyVoice && workon myvoice_app"
 
 alias gs="git status"
 alias ga="git add ."

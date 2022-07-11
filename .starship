@@ -2,21 +2,32 @@
 success_symbol = "[➜ ](bold green)"
 error_symbol = "[➜ ](bold red)"
 
+[time]
+disabled = false
+utc_time_offset = "-5"
+use_12hr = true
+style = "bold dimmed yellow"
+format = "[$time]($style) "
+
 [directory]
 truncation_length = 4
 truncation_symbol = "…/"
 
 [hostname]
-ssh_only = true
-format =  "on [$hostname](bold red) "
-trim_at = ".companyname.com"
+ssh_only = false
+format = "on [$ssh_symbol$hostname](bold dimmed green) "
+trim_at = "."
 disabled = false
 
 [username]
+show_always = true
 style_user = "white bold"
 style_root = "black bold"
-format = "user: [$user]($style) "
+format = "[$user]($style) "
 disabled = false
+
+[aws]
+format = 'in [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
 
 [conda]
 format = "[(\\($environment\\))](dimmed green) "
