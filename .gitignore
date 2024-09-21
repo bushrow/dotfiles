@@ -1,25 +1,33 @@
-# Folder view configuration files
+# Reference: https://gitignore.io
+
+
+### macOS ###
+# General
 .DS_Store
-Desktop.ini
-*.icloud
+.AppleDouble
+.LSOverride
 
-# Thumbnail cache files
+# Icon must end with two \r
+Icon
+
+# Thumbnails
 ._*
-Thumbs.db
 
-# Files that might appear on external disks
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
 .Spotlight-V100
+.TemporaryItems
 .Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
-# Python files
-*.pyc
-.ipynb_checkpoints/
-__pycache__
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
-# Compiled C++ files
-*.out
-
-# Application specific files
-venv
-node_modules
-.sass-cache
+# iCloud generated files
+*.icloud

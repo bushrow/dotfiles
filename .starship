@@ -14,7 +14,7 @@ truncation_length = 4
 truncation_symbol = "…/"
 
 [hostname]
-ssh_only = false
+ssh_only = true
 format = "on [$ssh_symbol$hostname](bold dimmed green) "
 trim_at = "."
 disabled = false

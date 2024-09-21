@@ -1,6 +1,6 @@
-alias ls="ls -FG"
-alias la="ls -FGa"
-alias ll="ls -FGlh"
+alias ls="ls --color=auto -FG"
+alias la="ls -a"
+alias ll="ls -lh"
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -15,21 +15,50 @@ alias eshp="subl ~/dotfiles/.starship"
 
 alias ca="conda activate"
 alias jn="jupyter notebook"
-alias scrap="jn '/Users/bushrow/bin/Scrap Notebook.ipynb'"
+alias scrap="cp '/Users/bushrow/bin/Scrap Template.ipynb' '/Users/bushrow/bin/Scrap Notebook.ipynb' && jn '/Users/bushrow/bin/Scrap Notebook.ipynb'"
 
-alias km="kinit -f && mwinit"
+
+# ========================================================
+# ================ Amazon-specific aliases ===============
+# ========================================================
+
+alias mw="mwinit -f"
+alias km="kinit -f && mw"
 alias rs_nb='cp "/Users/bushrow/bin/Redshift Connection Template.ipynb" $(pwd)/Untitled.ipynb && jn $(pwd)/Untitled.ipynb'
 alias lucid="cd /Users/bushrow/Projects/TeamRepos/Lucid-DAaS/"
-alias myvoice="cd /Users/bushrow/Projects/MyVoice && workon myvoice_app"
+alias team="cd /Users/bushrow/Projects/TeamRepos/PXTSolutionsBIRepository/Prod/"
+
+alias ada_update='ada credentials update --once --provider=conduit'
+
+alias bb=brazil-build
+alias bba='brazil-build apollo-pkg'
+alias bre='brazil-runtime-exec'
+alias brc='brazil-recursive-cmd'
+alias bws='brazil ws'
+alias bwsuse='bws use --gitMode -p'
+alias bwscreate='bws create -n'
+alias brc=brazil-recursive-cmd
+alias bbr='brc brazil-build'
+alias bball='brc --allPackages'
+alias bbb='brc --allPackages brazil-build'
+alias bbra='bbr apollo-pkg'
+
+
+# ========================================================
+# ================= Git aliases/functions ================
+# ========================================================
 
 alias gs="git status"
 alias ga="git add ."
 alias gc="git commit"
-alias gcm="git commit -m"
+alias gcm="gc -m"
 alias gac="ga && gcm"
+alias gd="git diff -M"
+alias gdn="gd --name-status"
 alias gl="git log"
 alias glo="git log --oneline"
 alias gls="git log --pretty=short"
+alias glg="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches"
 alias pull="git pull"
 alias gf="git fetch"
 alias push="git push"
@@ -41,6 +70,8 @@ alias gb="git branch"
 alias gm="git merge"
 
 gsa () {
+    # Print repository status for all git repositories in subdirectories
+
     base_dir=$(pwd)
     updates=0
     for f in $(find . -name '.git')
@@ -65,4 +96,41 @@ gsa () {
         echo "All repositories are up to date. Nothing to commit."
     fi
     cd $base_dir
+}
+
+
+# ========================================================
+# =============== Docker aliases/functions ===============
+# ========================================================
+
+alias dev_dkr_login='aws ecr get-login-password --profile=bi_dev_admin --region=us-east-1 | docker login --username AWS --password-stdin 527063204165.dkr.ecr.us-east-1.amazonaws.com'
+
+dkr_login_aws () {
+    # Login to Docker with AWS ECR credentials
+    # Up to four arguments can be passed: 
+    #   $1: AWS profile name
+    #   $2: AWS region name
+    #   $3: Target ECR account number
+    #   $4: Target ECR region
+
+    if [[ ! -z $1 ]]; then
+        prof="--profile=$1"
+    fi
+    if [[ ! -z $2 ]]; then
+        region_name=$2
+    else
+        region_name=$(aws configure get region $prof)
+    fi
+    if [ -z $3 ]; then
+        tgt_acct=$(aws sts get-caller-identity $prof --query Account --output text)
+    else
+        tgt_acct=$3
+    fi
+    if [ -z $4 ]; then
+        tgt_region=$region_name
+    else
+        tgt_region=$4
+    fi
+    region="--region=$region_name"
+    aws ecr get-login-password $prof $region | docker login --username AWS --password-stdin $tgt_acct.dkr.ecr.$tgt_region.amazonaws.com;
 }
