@@ -1,0 +1,5 @@
+datagrip
+drawio
+obsidian
+sublime-text
+visual-studio-code

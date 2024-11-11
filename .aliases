@@ -22,7 +22,7 @@ alias scrap="cp '/Users/bushrow/bin/Scrap Template.ipynb' '/Users/bushrow/bin/Sc
 # ================ Amazon-specific aliases ===============
 # ========================================================
 
-alias mw="mwinit -f"
+alias mw="mwinit -f -s"
 alias km="kinit -f && mw"
 alias rs_nb='cp "/Users/bushrow/bin/Redshift Connection Template.ipynb" $(pwd)/Untitled.ipynb && jn $(pwd)/Untitled.ipynb'
 alias lucid="cd /Users/bushrow/Projects/TeamRepos/Lucid-DAaS/"
